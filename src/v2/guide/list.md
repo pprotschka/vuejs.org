@@ -452,7 +452,7 @@ When they exist on the same node, `v-for` has a higher priority than `v-if`. Tha
 The above only renders the todos that are not complete.
 
 If instead, your intent is to conditionally skip execution of the loop, you can place the `v-if` on a wrapper element (or [`<template>`](conditional.html#Conditional-Groups-with-v-if-on-lt-template-gt)). For example:
-
+ 
 ``` html
 <ul v-if="todos.length">
   <li v-for="todo in todos">
@@ -461,6 +461,17 @@ If instead, your intent is to conditionally skip execution of the loop, you can 
 </ul>
 <p v-else>No todos left!</p>
 ```
+
+Sometimes it can also be useful to put a v-if in a non-html element as to not interupt your layout. In this case it is possible to use a template tag. For example:
+ 
+ ``` html
+ <template v-if="condition">
+  <div v-for="item in items">
+    {{ item }}
+  </div>
+</template>
+```
+
 
 ## `v-for` with a Component
 
